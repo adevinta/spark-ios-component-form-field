@@ -1,4 +1,4 @@
-# ``SparkFormField``
+# ``SparkComponentFormField``
 
 The Spark FormField provide context to your form elements easily, unifying an a proper way to show a label, required marker, help & status messages or counter in any input/field components. 
 

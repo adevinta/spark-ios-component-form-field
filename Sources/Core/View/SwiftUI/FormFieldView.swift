@@ -1,6 +1,6 @@
 //
 //  FormFieldView.swift
-//  SparkFormField
+//  SparkComponentFormField
 //
 //  Created by alican.aycil on 18.03.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -99,7 +99,7 @@ public struct FormFieldView<Component: View>: View {
     ///
     /// ![FormField rendering with TextField.](component.png)
     public init(
-        theme: Theme,
+        theme: any Theme,
         feedbackState: FormFieldFeedbackState = .default,
         title: String? = nil,
         helper: String? = nil,
@@ -136,7 +136,7 @@ public struct FormFieldView<Component: View>: View {
     ///   - isTitleRequired: The asterisk symbol at the end of title.
     @available(*, deprecated, message: "Replaced by the init with the isRequired String since the 1.1.0.")
     public init(
-        theme: Theme,
+        theme: any Theme,
         @ViewBuilder component: @escaping () -> Component,
         feedbackState: FormFieldFeedbackState = .default,
         title: String? = nil,
@@ -163,7 +163,7 @@ public struct FormFieldView<Component: View>: View {
     ///   - isTitleRequired: The asterisk symbol at the end of title.
     @available(*, deprecated, message: "Replaced by the init with the helper String since the 0.1.1.")
     public init(
-        theme: Theme,
+        theme: any Theme,
         @ViewBuilder component: @escaping () -> Component,
         feedbackState: FormFieldFeedbackState = .default,
         title: String? = nil,
@@ -190,7 +190,7 @@ public struct FormFieldView<Component: View>: View {
     ///   - isTitleRequired: The asterisk symbol at the end of title.
     @available(*, deprecated, message: "Replaced by the init with the title and helper String since the 1.1.0.")
     public init(
-        theme: Theme,
+        theme: any Theme,
         @ViewBuilder component: @escaping () -> Component,
         feedbackState: FormFieldFeedbackState = .default,
         attributedTitle: AttributedString? = nil,
@@ -229,7 +229,7 @@ public struct FormFieldView<Component: View>: View {
     ///   - isTitleRequired: The asterisk symbol at the end of title.
     @available(*, deprecated, message: "Replaced by the init with the helper String since the 0.1.1.")
     public init(
-        theme: Theme,
+        theme: any Theme,
         @ViewBuilder component: @escaping () -> Component,
         feedbackState: FormFieldFeedbackState = .default,
         attributedTitle: AttributedString? = nil,

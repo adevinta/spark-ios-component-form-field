@@ -1,13 +1,13 @@
 //
 //  FormFieldViewSnapshotTests.swift
-//  SparkFormFieldSnapshotTests
+//  SparkComponentFormFieldSnapshotTests
 //
 //  Created by alican.aycil on 14.04.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
 //
 
 import SwiftUI
-@testable import SparkFormField
+@testable import SparkComponentFormField
 @_spi(SI_SPI) import SparkCommonSnapshotTesting
 import SparkTheming
 @_spi(SI_SPI) import SparkThemingTesting
@@ -21,7 +21,7 @@ final class FormFieldViewSnapshotTests: SwiftUIComponentSnapshotTestCase {
 
     // MARK: - Properties
 
-    private let theme: Theme = SparkTheme.shared
+    private let theme: any Theme = SparkTheme.shared
 
     // MARK: - Tests
 

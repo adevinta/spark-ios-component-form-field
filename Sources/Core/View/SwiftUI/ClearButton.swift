@@ -1,6 +1,6 @@
 //
 //  ClearButton.swift
-//  SparkFormField
+//  SparkComponentFormField
 //
 //  Created by robin.lemaire on 14/05/2025.
 //  Copyright © 2025 Leboncoin. All rights reserved.

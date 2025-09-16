@@ -1,6 +1,6 @@
 //
 //  FormFieldViewModel.swift
-//  SparkFormField
+//  SparkComponentFormField
 //
 //  Created by alican.aycil on 30.01.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -32,7 +32,7 @@ final class FormFieldViewModel: ObservableObject {
 
     @Published private(set) var spacing: CGFloat
 
-    var theme: Theme {
+    var theme: any Theme {
         didSet {
             self.updateColors()
             self.updateFonts()
@@ -71,10 +71,10 @@ final class FormFieldViewModel: ObservableObject {
 
     private let frameworkType: FrameworkType
 
-    private let getColorsUseCase: FormFieldGetColorsUseCaseable
-    private let getFontsUseCase: FormFieldGetFontsUseCaseable
-    private let getFormattedTitleUseCase: FormFieldGetFormattedTitleUseCaseable
-    private let getTitleAccessibilityLabelUseCase: FormFieldGetTitleAccessibilityLabelUseCaseable
+    private let getColorsUseCase: any FormFieldGetColorsUseCaseable
+    private let getFontsUseCase: any FormFieldGetFontsUseCaseable
+    private let getFormattedTitleUseCase: any FormFieldGetFormattedTitleUseCaseable
+    private let getTitleAccessibilityLabelUseCase: any FormFieldGetTitleAccessibilityLabelUseCaseable
 
     private var colors: FormFieldColors
     private var fonts: FormFieldFonts
@@ -83,15 +83,15 @@ final class FormFieldViewModel: ObservableObject {
 
     init(
         frameworkType: FrameworkType,
-        theme: Theme,
+        theme: any Theme,
         feedbackState: FormFieldFeedbackState,
         title: String?,
         helper: String?,
         isRequired: Bool = false,
-        getColorsUseCase: FormFieldGetColorsUseCaseable = FormFieldGetColorsUseCase(),
-        getFontsUseCase: FormFieldGetFontsUseCaseable = FormFieldGetFontsUseCase(),
-        getFormattedTitleUseCase: FormFieldGetFormattedTitleUseCaseable = FormFieldGetFormattedTitleUseCase(),
-        getTitleAccessibilityLabelUseCase: FormFieldGetTitleAccessibilityLabelUseCaseable = FormFieldGetTitleAccessibilityLabelUseCase()
+        getColorsUseCase: any FormFieldGetColorsUseCaseable = FormFieldGetColorsUseCase(),
+        getFontsUseCase: any FormFieldGetFontsUseCaseable = FormFieldGetFontsUseCase(),
+        getFormattedTitleUseCase: any FormFieldGetFormattedTitleUseCaseable = FormFieldGetFormattedTitleUseCase(),
+        getTitleAccessibilityLabelUseCase: any FormFieldGetTitleAccessibilityLabelUseCaseable = FormFieldGetTitleAccessibilityLabelUseCase()
     ) {
         self.frameworkType = frameworkType
         self.theme = theme
@@ -193,7 +193,7 @@ final class FormFieldViewModel: ObservableObject {
 
     // MARK: - Static func
 
-    private static func spacing(from theme: Theme) -> CGFloat {
+    private static func spacing(from theme: any Theme) -> CGFloat {
         return theme.layout.spacing.small
     }
 }

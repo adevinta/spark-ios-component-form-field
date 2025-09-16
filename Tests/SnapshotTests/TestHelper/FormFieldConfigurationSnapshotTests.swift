@@ -1,13 +1,13 @@
 //
 //  FormFieldConfigurationSnapshotTests.swift
-//  SparkFormFieldSnapshotTests
+//  SparkComponentFormFieldSnapshotTests
 //
 //  Created by alican.aycil on 08.04.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
 //
 
 import UIKit
-@testable import SparkFormField
+@testable import SparkComponentFormField
 @_spi(SI_SPI) import SparkCommonSnapshotTesting
 
 struct FormFieldConfigurationSnapshotTests {

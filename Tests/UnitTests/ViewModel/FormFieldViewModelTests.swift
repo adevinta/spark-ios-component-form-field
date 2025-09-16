@@ -1,6 +1,6 @@
 //
 //  FormFieldViewModelTests.swift
-//  SparkFormFieldUnitTests
+//  SparkComponentFormFieldUnitTests
 //
 //  Created by alican.aycil on 26.03.24.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -8,8 +8,8 @@
 
 import SwiftUI
 import XCTest
-@testable import SparkFormField
-@_spi(SI_SPI) import SparkFormFieldTesting
+@testable import SparkComponentFormField
+@_spi(SI_SPI) import SparkComponentFormFieldTesting
 @_spi(SI_SPI) import SparkCommonTesting
 @_spi(SI_SPI) import SparkThemingTesting
 @_spi(SI_SPI) import SparkCommon

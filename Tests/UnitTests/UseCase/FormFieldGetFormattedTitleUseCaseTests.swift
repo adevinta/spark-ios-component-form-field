@@ -1,6 +1,6 @@
 //
 //  FormFieldGetFormattedTitleUseCaseTests.swift
-//  SparkFormFieldTests
+//  SparkComponentFormFieldTests
 //
 //  Created on 06/05/2025.
 //  Copyright © 2025 Leboncoin. All rights reserved.
@@ -10,7 +10,7 @@ import XCTest
 import SparkTheming
 @_spi(SI_SPI) import SparkCommon
 @_spi(SI_SPI) import SparkThemingTesting
-@testable import SparkFormField
+@testable import SparkComponentFormField
 
 final class FormFieldGetFormattedTitleUseCaseTests: XCTestCase {
 

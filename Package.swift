@@ -5,18 +5,18 @@ import PackageDescription
 
 // swiftlint:disable all
 let package = Package(
-    name: "SparkFormField",
+    name: "SparkComponentFormField",
     platforms: [
         .iOS(.v16)
     ],
     products: [
         .library(
-            name: "SparkFormField",
-            targets: ["SparkFormField"]
+            name: "SparkComponentFormField",
+            targets: ["SparkComponentFormField"]
         ),
         .library(
-            name: "SparkFormFieldTesting",
-            targets: ["SparkFormFieldTesting"]
+            name: "SparkComponentFormFieldTesting",
+            targets: ["SparkComponentFormFieldTesting"]
         )
     ],
     dependencies: [
@@ -38,14 +38,14 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "SparkFormField",
+            name: "SparkComponentFormField",
             dependencies: [
                 .product(
                     name: "SparkCommon",
                     package: "spark-ios-common"
                 ),
                 .product(
-                    name: "SparkTextInput",
+                    name: "SparkComponentTextInput",
                     package: "spark-ios-component-text-input"
                 ),
                 .product(
@@ -56,9 +56,9 @@ let package = Package(
             path: "Sources/Core"
         ),
         .target(
-            name: "SparkFormFieldTesting",
+            name: "SparkComponentFormFieldTesting",
             dependencies: [
-                "SparkFormField",
+                "SparkComponentFormField",
                 .product(
                     name: "SparkCommon",
                     package: "spark-ios-common"
@@ -79,10 +79,10 @@ let package = Package(
             path: "Sources/Testing"
         ),
         .testTarget(
-            name: "SparkFormFieldUnitTests",
+            name: "SparkComponentFormFieldUnitTests",
             dependencies: [
-                "SparkFormField",
-                "SparkFormFieldTesting",
+                "SparkComponentFormField",
+                "SparkComponentFormFieldTesting",
                 .product(
                     name: "SparkCommonTesting",
                     package: "spark-ios-common"
@@ -95,10 +95,10 @@ let package = Package(
             path: "Tests/UnitTests"
         ),
         .testTarget(
-            name: "SparkFormFieldSnapshotTests",
+            name: "SparkComponentFormFieldSnapshotTests",
             dependencies: [
-                "SparkFormField",
-                "SparkFormFieldTesting",
+                "SparkComponentFormField",
+                "SparkComponentFormFieldTesting",
                 .product(
                     name: "SparkCommonSnapshotTesting",
                     package: "spark-ios-common"

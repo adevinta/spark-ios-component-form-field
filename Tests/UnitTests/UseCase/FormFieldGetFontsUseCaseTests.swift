@@ -1,6 +1,6 @@
 //
 //  FormFieldGetFontsUseCaseTests.swift
-//  SparkFormField
+//  SparkComponentFormField
 //
 //  Created by robin.lemaire on 06/05/25.
 //  Copyright © 2024 Leboncoin. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 import SwiftUI
-@testable import SparkFormField
+@testable import SparkComponentFormField
 @_spi(SI_SPI) import SparkThemingTesting
 
 final class FormFieldGetFontsUseCaseTests: XCTestCase {

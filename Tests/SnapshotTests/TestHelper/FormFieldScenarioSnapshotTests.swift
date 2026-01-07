@@ -58,9 +58,9 @@ enum FormFieldScenarioSnapshotTests: String, CaseIterable {
     ///
     /// Content:
     ///  - feedbackState: all
-    ///  - title: short
+    ///  - titleType: short
     ///  - clearButton: nil
-    ///  - helper: short
+    ///  - helperType: short
     ///  - helperImage: nil
     ///  - isCounter: false
     ///  - isRequired: false,
@@ -74,9 +74,9 @@ enum FormFieldScenarioSnapshotTests: String, CaseIterable {
             return .init(
                 scenario: self,
                 feedbackState: feedbackState,
-                title: "Agreement",
+                titleType: .short,
                 clearButtonImageName: nil,
-                helper: "Your agreement is important.",
+                helperType: .short,
                 helperImageName: nil,
                 isCounter: false,
                 isRequired: false,
@@ -93,9 +93,9 @@ enum FormFieldScenarioSnapshotTests: String, CaseIterable {
     ///
     /// Content:
     ///  - feedbackState: 'default'
-    ///  - title: all
+    ///  - titleType: all
     ///  - clearButton: nil
-    ///  - helper: short
+    ///  - helperType: short
     ///  - helperImage: nil
     ///  - isCounter: true
     ///  - isRequired: false,
@@ -103,19 +103,15 @@ enum FormFieldScenarioSnapshotTests: String, CaseIterable {
     ///  - modes: light
     ///  - sizes (accessibility): default
     private func test2() -> [FormFieldConfigurationSnapshotTests] {
-        let titles: [String?] = [
-            "Lorem Ipsum",
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-            nil
-        ]
+        let titleTypes = TextType.allCases
 
-        return titles.map { title in
+        return titleTypes.map { titleType in
             return .init(
                 scenario: self,
                 feedbackState: .default,
-                title: title,
+                titleType: titleType,
                 clearButtonImageName: nil,
-                helper: "Your agreement is important.",
+                helperType: .short,
                 helperImageName: nil,
                 isCounter: true,
                 isRequired: false,
@@ -132,9 +128,9 @@ enum FormFieldScenarioSnapshotTests: String, CaseIterable {
     ///
     /// Content:
     ///  - feedbackState: 'default'
-    ///  - title: all
+    ///  - titleType: all
     ///  - clearButton: nil
-    ///  - helper: short
+    ///  - helperType: short
     ///  - helperImage: nil
     ///  - isCounter: false
     ///  - isRequired: false,
@@ -145,9 +141,9 @@ enum FormFieldScenarioSnapshotTests: String, CaseIterable {
         return [.init(
             scenario: self,
             feedbackState: .default,
-            title: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            titleType: .long,
             clearButtonImageName: nil,
-            helper: "Your agreement is important.",
+            helperType: .short,
             helperImageName: nil,
             isCounter: false,
             isRequired: true,
@@ -163,9 +159,9 @@ enum FormFieldScenarioSnapshotTests: String, CaseIterable {
     ///
     /// Content:
     ///  - feedbackState: error
-    ///  - title: short
+    ///  - titleType: short
     ///  - clearButton: nil
-    ///  - helper: all
+    ///  - helperType: all
     ///  - helperImage: all
     ///  - isCounter: all
     ///  - isRequired: false,
@@ -173,11 +169,7 @@ enum FormFieldScenarioSnapshotTests: String, CaseIterable {
     ///  - modes: light
     ///  - sizes (accessibility): default
     private func test4() -> [FormFieldConfigurationSnapshotTests] {
-        let helpers: [String?] = [
-            "Lorem Ipsum",
-            "It is a long established fact that a reader will be distracted.",
-            nil
-        ]
+        let helperTypes = TextType.allCases
 
         let imagesNames: [String?] = [
             "infinity.circle",
@@ -186,15 +178,15 @@ enum FormFieldScenarioSnapshotTests: String, CaseIterable {
 
         let isCounters: [Bool] = [true, false]
 
-        return helpers.flatMap { helper in
+        return helperTypes.flatMap { helperType in
             imagesNames.flatMap { imageName in
                 isCounters.map { isCounter in
                     return .init(
                         scenario: self,
                         feedbackState: .error,
-                        title: "Agreement",
+                        titleType: .short,
                         clearButtonImageName: nil,
-                        helper: helper,
+                        helperType: helperType,
                         helperImageName: imageName,
                         isCounter: isCounter,
                         isRequired: false,
@@ -213,9 +205,9 @@ enum FormFieldScenarioSnapshotTests: String, CaseIterable {
     ///
     /// Content:
     ///  - feedbackState: 'default'
-    ///  - title: short
+    ///  - titleType: short
     ///  - clearButton: nil
-    ///  - helper: short
+    ///  - helperType: short
     ///  - helperImage: true,
     ///  - isCounter: false
     ///  - isRequired: false,
@@ -229,9 +221,9 @@ enum FormFieldScenarioSnapshotTests: String, CaseIterable {
             return .init(
                 scenario: self,
                 feedbackState: feedbackState,
-                title: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                titleType: .long,
                 clearButtonImageName: nil,
-                helper: "It is a long established fact that a reader will be distracted.",
+                helperType: .long,
                 helperImageName: "infinity.circle",
                 isCounter: false,
                 isRequired: false,
@@ -248,9 +240,9 @@ enum FormFieldScenarioSnapshotTests: String, CaseIterable {
     ///
     /// Content:
     ///  - feedbackState: error
-    ///  - title: all
+    ///  - titleType: all
     ///  - clearButton: visible
-    ///  - helper: none
+    ///  - helperType: none
     ///  - helperImage: none
     ///  - isCounter: none
     ///  - isRequired: false,
@@ -258,24 +250,20 @@ enum FormFieldScenarioSnapshotTests: String, CaseIterable {
     ///  - modes: light
     ///  - sizes (accessibility): default
     private func test6() -> [FormFieldConfigurationSnapshotTests] {
-        let titles: [String?] = [
-            "Lorem Ipsum",
-            "It is a long established fact that a reader will be distracted.",
-            nil
-        ]
+        let titleTypes = TextType.allCases
 
         let imagesNames: [String?] = [
             "multiply.circle"
         ]
 
-        return titles.flatMap { title in
+        return titleTypes.flatMap { titleType in
             imagesNames.map { imageName in
                 return .init(
                     scenario: self,
                     feedbackState: .error,
-                    title: title,
+                    titleType: titleType,
                     clearButtonImageName: imageName,
-                    helper: nil,
+                    helperType: .none,
                     helperImageName: nil,
                     isCounter: false,
                     isRequired: false,
@@ -293,9 +281,9 @@ enum FormFieldScenarioSnapshotTests: String, CaseIterable {
     ///
     /// Content:
     ///  - feedbackState: all
-    ///  - title: short
+    ///  - titleType: short
     ///  - clearButton: nil
-    ///  - helper: short
+    ///  - helperType: short
     ///  - helperImage: nil
     ///  - isCounter: false
     ///  - isRequired: false,
@@ -309,9 +297,9 @@ enum FormFieldScenarioSnapshotTests: String, CaseIterable {
             return .init(
                 scenario: self,
                 feedbackState: feedbackState,
-                title: "Agreement",
+                titleType: .short,
                 clearButtonImageName: nil,
-                helper: "Your agreement is important.",
+                helperType: .short,
                 helperImageName: nil,
                 isCounter: false,
                 isRequired: false,
@@ -328,9 +316,9 @@ enum FormFieldScenarioSnapshotTests: String, CaseIterable {
     ///
     /// Content:
     ///  - feedbackState: error
-    ///  - title: short
+    ///  - titleType: short
     ///  - clearButton: all
-    ///  - helper: short
+    ///  - helperType: short
     ///  - helperImage: true
     ///  - isCounter: all
     ///  - isRequired: false,
@@ -338,23 +326,20 @@ enum FormFieldScenarioSnapshotTests: String, CaseIterable {
     ///  - modes: light
     ///  - sizes (accessibility): all
     private func test8() -> [FormFieldConfigurationSnapshotTests] {
-        let texts: [String?] = [
-            "Lorem Ipsum",
-            "It is a long established fact that a reader will be distracted.",
-        ]
+        let textTypes = TextType.allCases.filter { $0 != .none }
 
         let imageName = "multiply.circle"
 
         let isCounters: [Bool] = [true, false]
 
-        return texts.flatMap { text in
+        return textTypes.flatMap { textType in
             isCounters.map { isCounter in
                 return .init(
                     scenario: self,
                     feedbackState: .error,
-                    title: text,
+                    titleType: textType,
                     clearButtonImageName: imageName,
-                    helper: text,
+                    helperType: textType,
                     helperImageName: imageName,
                     isCounter: isCounter,
                     isRequired: true,
@@ -400,9 +385,9 @@ enum FormFieldScenarioSnapshotTests: String, CaseIterable {
 //                            return .init(
 //                                scenario: self,
 //                                feedbackState: .default,
-//                                title: title,
+//                                titleType: title,
 //                                clearButtonImageName: clearButton,
-//                                helper: helper,
+//                                helperType: helper,
 //                                helperImageName: helperImageName,
 //                                isCounter: isCounter,
 //                                isRequired: true,

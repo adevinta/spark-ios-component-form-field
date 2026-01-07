@@ -79,6 +79,7 @@ public final class FormFieldUIView<Component: UIView>: UIView {
         label.isHidden = true
         label.accessibilityIdentifier = FormFieldAccessibilityIdentifier.formFieldTitle
         label.isAccessibilityElement = true
+        label.accessibilityRespondsToUserInteraction = true
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }()
@@ -120,6 +121,7 @@ public final class FormFieldUIView<Component: UIView>: UIView {
         button.setContentCompressionResistancePriority(.required, for: .horizontal)
         button.accessibilityIdentifier = FormFieldAccessibilityIdentifier.formFieldClearButton
         button.isAccessibilityElement = true
+        button.accessibilityRespondsToUserInteraction = true
         return button
     }()
 
@@ -168,6 +170,7 @@ public final class FormFieldUIView<Component: UIView>: UIView {
         label.adjustsFontForContentSizeCategory = true
         label.accessibilityIdentifier = FormFieldAccessibilityIdentifier.formFieldHelperMessage
         label.isAccessibilityElement = true
+        label.accessibilityRespondsToUserInteraction = true
         return label
     }()
 
@@ -203,6 +206,7 @@ public final class FormFieldUIView<Component: UIView>: UIView {
         label.isHidden = true
         label.accessibilityIdentifier = FormFieldAccessibilityIdentifier.formFieldSecondaryHelperMessage
         label.isAccessibilityElement = true
+        label.accessibilityRespondsToUserInteraction = true
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }()
@@ -527,6 +531,7 @@ public final class FormFieldUIView<Component: UIView>: UIView {
 
     private func setComponent() {
         self.stackView.insertArrangedSubview(self.component, at: 1)
+        self.component.accessibilityRespondsToUserInteraction = true
     }
 
     private func setupViews() {

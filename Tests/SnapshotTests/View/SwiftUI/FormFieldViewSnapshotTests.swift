@@ -46,8 +46,8 @@ final class FormFieldViewSnapshotTests: SwiftUIComponentSnapshotTestCase {
                 let view = FormFieldView(
                     theme: self.theme,
                     feedbackState: configuration.feedbackState,
-                    title: configuration.title,
-                    helper: configuration.helper,
+                    title: configuration.titleType.value(from: .title),
+                    helper: configuration.helperType.value(from: .helper),
                     helperImage: Image(configuration.helperImageName),
                     isRequired: configuration.isRequired,
                     component: {

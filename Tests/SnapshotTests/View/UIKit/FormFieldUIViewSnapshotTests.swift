@@ -43,8 +43,8 @@ final class FormFieldUIViewSnapshotTests: UIKitComponentSnapshotTestCase {
                     theme: self.theme,
                     component: component,
                     feedbackState: configuration.feedbackState,
-                    title: configuration.title,
-                    helper: configuration.helper,
+                    title: configuration.titleType.value(from: .title),
+                    helper: configuration.helperType.value(from: .helper),
                     isRequired: configuration.isRequired
                 )
 

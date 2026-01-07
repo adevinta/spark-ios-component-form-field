@@ -16,9 +16,9 @@ struct FormFieldConfigurationSnapshotTests {
 
     let scenario: FormFieldScenarioSnapshotTests
     let feedbackState: FormFieldFeedbackState
-    let title: String?
+    let titleType: TextType
     let clearButtonImageName: String?
-    let helper: String?
+    let helperType: TextType
     let helperImageName: String?
     let isCounter: Bool
     let isRequired: Bool
@@ -32,9 +32,9 @@ struct FormFieldConfigurationSnapshotTests {
         return [
             "\(self.scenario.rawValue)",
             "\(self.feedbackState)" + "FeedbackState",
-            self.title != nil ? "withTitle" : nil,
+            "\(self.titleType.prefixName)" + "Title",
             self.clearButtonImageName != nil ? "withClearButton" : nil,
-            self.helper != nil ? "withHelper" : nil,
+            "\(self.helperType.prefixName)" + "Helper",
             self.helperImageName != nil ? "withHelperImage" : nil,
             self.isRequired ? "isRequired" : nil,
             self.isEnabled ? "isEnabled" : nil,
@@ -42,5 +42,50 @@ struct FormFieldConfigurationSnapshotTests {
         ]
             .compactMap { $0 }
             .joined(separator: "-")
+    }
+}
+
+// MARK: - Enums
+
+enum ContentType: CaseIterable {
+    case title
+    case helper
+}
+
+enum TextType: CaseIterable {
+    case none
+    case short
+    case long
+
+    // MARK: - Properties
+
+    var prefixName: String {
+        switch self {
+        case .none: "without"
+        case .short: "withSort"
+        case .long: "withLong"
+        }
+    }
+
+    private var value: String? {
+        switch self {
+        case .none: nil
+        case .short: "Lorem Ipsum"
+        case .long: "It is a long established fact that a reader will be distracted."
+        }
+    }
+
+    // MARK: - Methods
+
+    func value(from contentType: ContentType) -> String? {
+        switch self {
+        case .none: nil
+        case .short:
+            switch contentType {
+            case .title: "Agreement"
+            case .helper: "Your agreement is important."
+            }
+        case .long: self.value
+        }
     }
 }

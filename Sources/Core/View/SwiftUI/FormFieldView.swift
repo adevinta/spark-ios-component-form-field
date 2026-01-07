@@ -268,6 +268,7 @@ public struct FormFieldView<Component: View>: View {
                             .accessibilityIdentifier(FormFieldAccessibilityIdentifier.formFieldTitle)
                             .accessibilitySortPriority(5)
                             .accessibility(self.titleAccessibility)
+                            .accessibilityRespondsToUserInteraction(true)
                     }
 
                     OptionalHStack(onStack: isAccessibilityStack) {
@@ -282,6 +283,7 @@ public struct FormFieldView<Component: View>: View {
                                 .accessibilityIdentifier(FormFieldAccessibilityIdentifier.formFieldClearButton)
                                 .accessibilitySortPriority(4)
                                 .accessibility(self.clearButtonAccessibility)
+                                .accessibilityRespondsToUserInteraction(true)
                                 .layoutPriority(3)
                         }
                     }
@@ -292,6 +294,7 @@ public struct FormFieldView<Component: View>: View {
             self.component
                 .accessibilityFocused(self.$isComponentFocused)
                 .accessibilitySortPriority(3)
+                .accessibilityRespondsToUserInteraction(true)
 
             // Footer
             if self.viewModel.helper != nil || self.viewModel.secondaryHelper != nil {
@@ -323,6 +326,7 @@ public struct FormFieldView<Component: View>: View {
                                 .accessibilityIdentifier(FormFieldAccessibilityIdentifier.formFieldHelperMessage)
                                 .accessibilitySortPriority(2)
                                 .accessibility(self.helperAccessibility)
+                                .accessibilityRespondsToUserInteraction(true)
                         }
                     }
 
@@ -337,6 +341,7 @@ public struct FormFieldView<Component: View>: View {
                                 .accessibilityIdentifier(FormFieldAccessibilityIdentifier.formFieldSecondaryHelperMessage)
                                 .accessibilitySortPriority(1)
                                 .accessibility(self.secondaryHelperAccessibility)
+                                .accessibilityRespondsToUserInteraction(true)
                         }
                     }
                 }

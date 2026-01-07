@@ -68,7 +68,7 @@ You can update accessibility Label and Value:
 ## Resources
 
 - Specification on [ZeroHeight](https://zeroheight.com/1186e1705/p/423a01-form-field)
-- Desing on [Figma](https://www.figma.com/design/0QchRdipAVuvVoDfTjLrgQ/Spark-Component-Specs?node-id=44899-1278)
+- Design on [Figma](https://www.figma.com/design/0QchRdipAVuvVoDfTjLrgQ/Spark-Component-Specs?node-id=44899-1278)
 - Discussion on [Slack](https://adevinta.slack.com/archives/C071PA3MWAK)
 
 

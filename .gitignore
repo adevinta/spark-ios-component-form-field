@@ -7,4 +7,8 @@ DerivedData/
 .swiftpm/
 *Generated/
 Package.resolved
+.swiftlint/
 .swiftlint/RemoteConfigCache
+.home/
+.spmComponentDerivedData/
+.sparkans/

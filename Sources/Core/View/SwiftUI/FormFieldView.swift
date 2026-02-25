@@ -58,10 +58,10 @@ public struct FormFieldView<Component: View>: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @AccessibilityFocusState private var isComponentFocused: Bool
 
-    @State private var titleAccessibility: Accessibility = .init()
-    private var clearButtonAccessibility: Accessibility = .init()
-    private var helperAccessibility: Accessibility = .init()
-    private var secondaryHelperAccessibility: Accessibility = .init()
+    private var customClearButtonAccessibilityLabel: String?
+    private var customHelperAccessibilityLabel: String?
+    private var customSecondaryHelperAccessibilityLabel: String?
+    private var customSecondaryHelperAccessibilityValue: String?
 
     // MARK: - Initialization
 
@@ -122,8 +122,6 @@ public struct FormFieldView<Component: View>: View {
 
         self.helperImage = helperImage
         self.component = component()
-
-        self.titleAccessibility.label = viewModel.titleAccessibilityLabel
     }
 
     /// Initialize a formField.
@@ -267,7 +265,7 @@ public struct FormFieldView<Component: View>: View {
                             .titleFrame(isAccessibilityStack: isAccessibilityStack)
                             .accessibilityIdentifier(FormFieldAccessibilityIdentifier.formFieldTitle)
                             .accessibilitySortPriority(5)
-                            .accessibility(self.titleAccessibility)
+                            .accessibilityLabel(optional: self.viewModel.titleAccessibilityLabel)
                             .accessibilityRespondsToUserInteraction(true)
                     }
 
@@ -282,7 +280,7 @@ public struct FormFieldView<Component: View>: View {
                                 .spacing(self.spacing)
                                 .accessibilityIdentifier(FormFieldAccessibilityIdentifier.formFieldClearButton)
                                 .accessibilitySortPriority(4)
-                                .accessibility(self.clearButtonAccessibility)
+                                .accessibilityLabel(optional: self.customClearButtonAccessibilityLabel)
                                 .accessibilityRespondsToUserInteraction(true)
                                 .layoutPriority(3)
                         }
@@ -325,7 +323,7 @@ public struct FormFieldView<Component: View>: View {
                                 .titleFrame(isAccessibilityStack: isAccessibilityStack)
                                 .accessibilityIdentifier(FormFieldAccessibilityIdentifier.formFieldHelperMessage)
                                 .accessibilitySortPriority(2)
-                                .accessibility(self.helperAccessibility)
+                                .accessibilityLabel(optional: self.customHelperAccessibilityLabel)
                                 .accessibilityRespondsToUserInteraction(true)
                         }
                     }
@@ -340,7 +338,8 @@ public struct FormFieldView<Component: View>: View {
                                 .frame(minHeight: self.iconSize)
                                 .accessibilityIdentifier(FormFieldAccessibilityIdentifier.formFieldSecondaryHelperMessage)
                                 .accessibilitySortPriority(1)
-                                .accessibility(self.secondaryHelperAccessibility)
+                                .accessibilityLabel(optional: self.customSecondaryHelperAccessibilityLabel)
+                                .accessibilityValue(optional: self.customSecondaryHelperAccessibilityValue)
                                 .accessibilityRespondsToUserInteraction(true)
                         }
                     }
@@ -349,9 +348,6 @@ public struct FormFieldView<Component: View>: View {
         }
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier(FormFieldAccessibilityIdentifier.formField)
-        .onChange(of: self.viewModel.titleAccessibilityLabel) { label in
-            self.titleAccessibility.label = label
-        }
     }
 
     // MARK: - Accessibility Modifier
@@ -369,7 +365,7 @@ public struct FormFieldView<Component: View>: View {
     /// - Returns: The current view.
     public func clearButtonAccessibilityLabel(_ label: String) -> Self {
         var copy = self
-        copy.clearButtonAccessibility.label = label
+        copy.customClearButtonAccessibilityLabel = label
         return copy
     }
 
@@ -378,7 +374,7 @@ public struct FormFieldView<Component: View>: View {
     /// - Returns: The current view.
     public func helperAccessibilityLabel(_ label: String) -> Self {
         var copy = self
-        copy.helperAccessibility.label = label
+        copy.customHelperAccessibilityLabel = label
         return copy
     }
 
@@ -387,7 +383,7 @@ public struct FormFieldView<Component: View>: View {
     /// - Returns: The current view.
     public func secondaryHelperAccessibilityLabel(_ label: String) -> Self {
         var copy = self
-        copy.secondaryHelperAccessibility.label = label
+        copy.customSecondaryHelperAccessibilityLabel = label
         return copy
     }
 
@@ -396,7 +392,7 @@ public struct FormFieldView<Component: View>: View {
     /// - Returns: The current view.
     public func secondaryHelperAccessibilityValue(_ value: String) -> Self {
         var copy = self
-        copy.secondaryHelperAccessibility.value = value
+        copy.customSecondaryHelperAccessibilityValue = value
         return copy
     }
 
